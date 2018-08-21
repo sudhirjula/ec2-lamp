@@ -1,0 +1,6 @@
+---
+#tasks file for php
+- name: restart apache
+  service:
+    name: httpd
+    state: restarted

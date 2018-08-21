@@ -1,0 +1,22 @@
+---
+#tasks file for php
+- name: Install php 7 with the most common packages
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - php
+    - php-cli
+    - php-common
+    - php-devel
+    - php-gd
+    - php-mbstring
+    - php-pdo
+    - php-xml  
+  notify: restart apache
+- name: Upload index.php file to the remote web directory
+  copy:
+    src: index.php
+    dest: /var/www/html
+    owner: ec2-user
+    group: ec2-user
